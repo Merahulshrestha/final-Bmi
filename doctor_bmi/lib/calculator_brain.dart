@@ -17,9 +17,10 @@ String bmi_calculator(){
   }
 
   String getResult() {
-    if (_bmi! >= 25) {
+   // remove the ! null check 
+    if (_bmi >= 25) {
       return 'Overweight';
-    } else if (_bmi! > 18.5) {
+    } else if (_bmi> 18.5) {
       return 'Normal';
     } else {
       return 'Underweight';
@@ -27,12 +28,20 @@ String bmi_calculator(){
   }
 
   String getInterpretation() {
-    if (_bmi! >= 25) {
+    if (_bmi >= 25) {
       return 'You have a higher than normal body weight. Try to exercise more.';
-    } else if (_bmi! >= 18.5) {
+    } else if (_bmi >= 18.5) {
       return 'You have a normal body weight. Good job!';
     } else {
       return 'You have a lower than normal body weight. You can eat a bit more.';
     }
   }
+ 
+ // here 
+ 
+ void main(){
+    CalculatorBrain c = CalculatorBrain(weight: 40, height: 10);
+  print(c.bmi_calculator());
+  
+ }
 }
