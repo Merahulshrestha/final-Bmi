@@ -13,7 +13,9 @@ class BottomButton extends StatelessWidget {
         child: Container(
           color: Colors.pink,
           child: Center(child: Text(text, style: 
-          TextStyle(color: Colors.green),)),
+          TextStyle(color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold),)),
            margin: EdgeInsets.only(top: 10.0),
         padding: EdgeInsets.only(bottom: 20.0),
         width: double.infinity,

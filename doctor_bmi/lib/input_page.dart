@@ -4,6 +4,8 @@ import 'package:doctor_bmi/calculator_brain.dart';
 import 'package:doctor_bmi/result_page.dart';
 import 'package:doctor_bmi/reusable_card.dart';
 import 'package:flutter/material.dart';
+import 'package:doctor_bmi/icon_content.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 class BmiCalculator extends StatefulWidget {
@@ -41,6 +43,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
         backgroundColor: Colors.white,
       ),
       body: Column(
+       
         children: [
           
           Expanded(
@@ -58,6 +61,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     color: selectedGender == Gender.male
                         ? activeCardColour
                         : inActiveCardColour,
+                        cardChild: IconContent(icon: FontAwesomeIcons.mars,
+                    label: 'MALE',),
                   ),
                 ),
                 Expanded(
@@ -73,6 +78,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     color: selectedGender == Gender.female
                         ? activeCardColour
                         : inActiveCardColour,
+                        cardChild: IconContent(icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',),
                   ),
                 ),
               ],
@@ -86,7 +93,11 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text("Height", style: heightStyle),
+                  const Text("Height", style:
+                  TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w900,
+                    ),),
                   const SizedBox(
                     height: 10,
                   ),
@@ -97,7 +108,11 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       Text(
                         height.toString(),
                       ),
-                      const Text("cm")
+                      const Text("cm",
+                      style:TextStyle(
+  fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+))
                     ],
                   ),
                   Slider(
@@ -125,6 +140,13 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                          Text(
+                          'AGE',
+                           style:TextStyle(
+  fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+),
+                        ),
                         Text(
                           age.toString(),
                         ),
@@ -179,12 +201,20 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
+                          'Weight',
+                          style: TextStyle(
+                              fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+                          ),
+                        ),
+                  Text(
                     weight.toString(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                       
                       CircleButton(
                         onTap: () {
                           setState(() {
@@ -227,7 +257,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               Navigator.push(
               context, MaterialPageRoute(builder: 
               (context) => 
-               ResultPage(bmiResult: calc.getResult(), 
+               ResultPage(bmiResult: calc.calculateBMI(), 
                interpretation: calc.getInterpretation(),
                 resultText: calc.getResult(),
 
